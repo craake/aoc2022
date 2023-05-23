@@ -29,6 +29,6 @@ public class Day01
             }
         }
 
-        return calories.Max();
+        return calories.Order().TakeLast(3).Sum();
     }
 }
