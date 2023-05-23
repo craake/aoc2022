@@ -14,6 +14,6 @@ public class Tests
     public void TestRun()
     {
         var result = Aoc2022.Day01.Run(_input);
-        Assert.AreEqual(24000, result);
+        Assert.That(result, Is.EqualTo(24000));
     }
 }
