@@ -1,9 +1,20 @@
 namespace Aoc2022;
 
+public delegate int CaloriesCountStrategy<T>(ICollection<T> data);
+
 public class Day01
 {
-    public static int Run(string input)
+    private CaloriesCountStrategy<int>? _countingDelegate;
+    private CaloriesCountStrategy<int> _defaultCountStrategy = (ICollection<int> coll) => coll.Max();
+
+    public Day01() {}
+
+    public Day01(CaloriesCountStrategy<int> del) => this._countingDelegate = del;
+
+    public int Run(string input)
     {
+        this._countingDelegate = this._countingDelegate ?? this._defaultCountStrategy;
+
         string[] lines = input.Trim().Split('\n');
         List<int> calories = new List<int>();
         int currentCalories = 0;
@@ -29,6 +40,6 @@ public class Day01
             }
         }
 
-        return calories.Order().TakeLast(3).Sum();
+        return this._countingDelegate(calories);
     }
 }

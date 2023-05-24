@@ -13,7 +13,7 @@ public class Tests
     [Test]
     public void TestRun()
     {
-        var result = Aoc2022.Day01.Run(_input);
+        var result = new Aoc2022.Day01().Run(_input);
         Assert.That(result, Is.EqualTo(45000));
     }
 }
