@@ -1,20 +1,18 @@
 namespace Aoc2022;
 
-public delegate int CaloriesCountStrategy<T>(ICollection<T> data);
-
-public class Day01
+public class CalorieCounter
 {
-    private CaloriesCountStrategy<int>? _countingDelegate;
-    private CaloriesCountStrategy<int> _defaultCountStrategy = (ICollection<int> coll) => coll.Max();
+    public delegate int CountFinished<T>(ICollection<T> data);
 
-    public Day01() {}
+    private CountFinished<int>? _resultStrategy;
+    private CountFinished<int> _defaultStrategy = (ICollection<int> c) => c.Max();
 
-    public Day01(CaloriesCountStrategy<int> del) => this._countingDelegate = del;
+    public CalorieCounter() { }
 
-    public int Run(string input)
+    public CalorieCounter(CountFinished<int> d) => this._resultStrategy = d;
+
+    public int Count(string input)
     {
-        this._countingDelegate = this._countingDelegate ?? this._defaultCountStrategy;
-
         string[] lines = input.Trim().Split('\n');
         List<int> calories = new List<int>();
         int currentCalories = 0;
@@ -36,10 +34,9 @@ public class Day01
             catch (Exception)
             {
                 Console.WriteLine($"Cannot parse {line} to int32");
-                break;
             }
         }
 
-        return this._countingDelegate(calories);
+        return _resultStrategy?.Invoke(calories) ?? _defaultStrategy(calories);
     }
 }
