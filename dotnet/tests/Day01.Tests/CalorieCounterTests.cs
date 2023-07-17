@@ -2,7 +2,7 @@ namespace Aoc22.Day01.Tests;
 
 public class CalorieCounterTests
 {
-    private string _input;
+    private string _input = "";
 
     [SetUp]
     public void Setup()
@@ -36,7 +36,7 @@ public class CalorieCounterTests
     [Test]
     public void Count_CallsGivenResultStrategy()
     {
-        CalorieCounter.CountFinished<int> d = (ICollection<int> c) => c.Min();
+        Func<ICollection<int>, int> d = (ICollection<int> c) => c.Min();
         var result = new Aoc2022.CalorieCounter(d).Count(_input);
         Assert.That(result, Is.EqualTo(6000));
     }

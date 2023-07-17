@@ -2,14 +2,12 @@ namespace Aoc2022;
 
 public class CalorieCounter
 {
-    public delegate int CountFinished<T>(ICollection<T> data);
-
-    private CountFinished<int>? _resultStrategy;
-    private CountFinished<int> _defaultStrategy = (ICollection<int> c) => c.Max();
+    private Func<ICollection<int>, int>? _resultStrategy;
+    private Func<ICollection<int>, int> _defaultStrategy = c => c.Max();
 
     public CalorieCounter() { }
 
-    public CalorieCounter(CountFinished<int> d) => this._resultStrategy = d;
+    public CalorieCounter(Func<ICollection<int>, int> rs) => this._resultStrategy = rs;
 
     public int Count(string input)
     {
