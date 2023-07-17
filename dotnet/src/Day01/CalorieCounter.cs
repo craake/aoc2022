@@ -2,17 +2,17 @@ namespace Aoc2022;
 
 public class CalorieCounter
 {
-    private Func<ICollection<int>, int>? _resultStrategy;
-    private Func<ICollection<int>, int> _defaultStrategy = c => c.Max();
+    private readonly Func<ICollection<int>, int>? _resultStrategy;
+    private readonly Func<ICollection<int>, int> _defaultStrategy = c => c.Max();
 
     public CalorieCounter() { }
 
-    public CalorieCounter(Func<ICollection<int>, int> rs) => this._resultStrategy = rs;
+    public CalorieCounter(Func<ICollection<int>, int> rs) => _resultStrategy = rs;
 
     public int Count(string input)
     {
         string[] lines = input.Trim().Split('\n');
-        List<int> calories = new List<int>();
+        List<int> calories = new();
         int currentCalories = 0;
 
         foreach (var line in lines)
