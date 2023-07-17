@@ -1,4 +1,5 @@
 ﻿using Aoc2022;
+using Aoc2022.Day01;
 
 string inputPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Input");
 string input = InputLoader.Load(inputPath) ?? "";
