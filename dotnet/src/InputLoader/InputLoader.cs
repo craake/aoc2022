@@ -22,5 +22,11 @@ public class InputLoader
 
         return null;
     }
-}
 
+    public static string[]? LoadLines(string path)
+    {
+        var str = Load(path);
+
+        return str?.Split("\n");
+    }
+}
