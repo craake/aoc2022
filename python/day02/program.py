@@ -155,3 +155,4 @@ with open(Path.joinpath(Path(__file__).parent, "input.txt"), "r") as input:
     print("Day 2\n-----")
     print(f"Part 1: {part1_result}")
     print(f"Part 2: {part2_result}")
+    print("")

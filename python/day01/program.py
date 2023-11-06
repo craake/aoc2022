@@ -31,7 +31,7 @@ with open(Path.joinpath(Path(__file__).parent, "input.txt"), "r") as input:
     part1_results = get_top_one(all_results)
     part2_results = get_top_three(all_results)
 
-    print("Day 01")
-    print("------")
+    print("Day 1\n-----")
     print(f"Part 1: {part1_results}")
     print(f"Part 2: {part2_results}")
+    print("")
